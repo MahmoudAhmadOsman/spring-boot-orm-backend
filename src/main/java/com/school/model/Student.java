@@ -1,10 +1,8 @@
 package com.school.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity (name = "students")
 public class Student {
 
     @Id
@@ -16,6 +14,7 @@ public class Student {
 
     @Column(name = "last_name", nullable = false)
     private  String lastName;
+
     @Column(name = "email", nullable = false)
     private String email;
 
