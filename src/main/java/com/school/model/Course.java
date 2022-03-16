@@ -3,7 +3,8 @@ package com.school.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
+
 
 @Entity
 @Table(name = "courses")
@@ -34,9 +35,15 @@ public class Course {
 
     //1:m orm
 
-    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-private Set<Student> students;
-//private  Student student;
+//
+
+    //course is the owning side - OneToOne rom
+//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinColumn(name = "student_id")
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "student_id", referencedColumnName = "id")
+private List<Student> student;
 
     public Course() {
     }
