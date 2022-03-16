@@ -1,19 +1,25 @@
 package com.school.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
-@Entity (name = "course")
+@Entity
 public class Course {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @NotEmpty(message = "Course name is required!")
+    @Column(name = "name")
     private String name;
-    @Column(name = "credit", nullable = false)
+
+    @NotEmpty(message = "Course credit is required!")
+    @Column(name = "credit")
     private Number credit;
 
+    @NotEmpty(message = "Course description is required!")
     @Lob
     @Column(name = "description")
     private Long description;
