@@ -13,7 +13,7 @@ public class CourseService {
     @Autowired
     private CourseRepository courseRepository;
 
-    //Get method - get list of courses
+    //Get list of courses
     public List<Course> getCourses(){
         return courseRepository.findAll();
     }
@@ -24,12 +24,12 @@ public class CourseService {
 
     }
 
-    //Save method - save a course
+    //Save method
     public Course saveCourse(Course course){
         return courseRepository.save(course);
     }
 
-    //Get by id - get course by its id
+    //Get by id
     public Course getCourseById(Course course){
         Course existingCourse = courseRepository.findById(course.getId()).orElse(null);
         existingCourse.setName(course.getName());
@@ -39,9 +39,7 @@ public class CourseService {
         return courseRepository.save(existingCourse);
     }
 
-
-//Delete method - Delete a course
-
+    //Delete method
     public String deleteCourse(Long id){
         courseRepository.deleteById(id);
         return "Course has been deleted successfully: " + id;
