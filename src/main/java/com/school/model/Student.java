@@ -34,16 +34,6 @@ public class Student {
     private Date registeredAt;
 
 
-//m:m orm
-
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "course_id", nullable = false)
-//    private Course course;
-
-
-
-
-
 
     public Student() {
     }

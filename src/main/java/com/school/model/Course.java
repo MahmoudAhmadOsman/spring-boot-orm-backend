@@ -33,14 +33,10 @@ public class Course {
     private Long description;
 
 
-    //1:m orm
-
-//
-
-    //course is the owning side - OneToOne rom
+//m:m orm
+//course is the owning side - OneToOne rom
 //    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    @JoinColumn(name = "student_id")
-
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "student_id", referencedColumnName = "id")
 private List<Student> student;
