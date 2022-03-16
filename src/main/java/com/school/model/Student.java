@@ -2,8 +2,10 @@ package com.school.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.Date;
 
 @Entity
+@Table(name = "students")
 public class Student {
 
     @Id
@@ -26,14 +28,32 @@ public class Student {
     @Column(name = "phone")
     private String phone;
 
+
+    @Temporal(value = TemporalType.TIMESTAMP)
+    @Column(name = "registered_at")
+    private Date registeredAt;
+
+
+//m:m orm
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id", nullable = false)
+    private Course course;
+
+
+
+
+
+
     public Student() {
     }
 
-    public Student(String firstName, String lastName, String email, String phone) {
+    public Student(String firstName, String lastName, String email, String phone, Date registeredAt) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
+        this.registeredAt = registeredAt;
     }
 
     public String getFirstName() {
@@ -66,5 +86,13 @@ public class Student {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Date getRegisteredAt() {
+        return registeredAt;
+    }
+
+    public void setRegisteredAt(Date registeredAt) {
+        this.registeredAt = registeredAt;
     }
 }
