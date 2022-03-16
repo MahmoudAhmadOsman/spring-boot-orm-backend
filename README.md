@@ -42,7 +42,7 @@ public class Course {
 
 
 
-    @OneToMany(cascade = CascadeType.ALL)
+     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "student_id", referencedColumnName = "id")
     private List<Student> student;
 
