@@ -42,11 +42,20 @@ public class Course {
     public Course() {
     }
 
-    public Course(String name, Number credit, Date createdAt, Long description) {
+    public Course(Long id, String name, Number credit, Date createdAt, Long description) {
+        this.id = id;
         this.name = name;
         this.credit = credit;
         this.createdAt = createdAt;
         this.description = description;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
