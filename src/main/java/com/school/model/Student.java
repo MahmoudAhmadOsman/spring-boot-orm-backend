@@ -1,8 +1,13 @@
 package com.school.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
+
 
 @Entity
 @Table(name = "students")
@@ -21,20 +26,17 @@ public class Student {
     private  String lastName;
 
     @NotEmpty(message = "Email is required!")
-    @Column(name = "email")
+    @Column(name = "email_address", unique = true)
     private String email;
 
     @NotEmpty(message = "Phone number is required!")
-    @Column(name = "phone")
+    @Column(name = "phone_number")
     private String phone;
 
 
     @Temporal(value = TemporalType.TIMESTAMP)
     @Column(name = "registered_at")
     private Date registeredAt;
-
-
-
     public Student() {
     }
 
@@ -85,4 +87,7 @@ public class Student {
     public void setRegisteredAt(Date registeredAt) {
         this.registeredAt = registeredAt;
     }
+
+
+
 }

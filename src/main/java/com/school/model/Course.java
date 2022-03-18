@@ -1,5 +1,9 @@
 package com.school.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
@@ -16,15 +20,15 @@ public class Course {
     private Long id;
 
     @NotEmpty(message = "Course name is required!")
-    @Column(name = "name")
+    @Column(name = "course_name")
     private String name;
 
     @NotEmpty(message = "Course credit is required!")
-    @Column(name = "credit")
+    @Column(name = "course_credit")
     private Number credit;
 
     @Temporal(value = TemporalType.TIMESTAMP)
-@Column(name = "created_time")
+    @Column(name = "created_at")
     private Date createdAt;
 
     @NotEmpty(message = "Course description is required!")
@@ -33,8 +37,8 @@ public class Course {
     private Long description;
 
 
-//m:m orm
-//course is the owning side - OneToOne rom
+    //m:m orm
+    //course is the owning side - OneToOne rom
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
         @JoinColumn(name = "student_id", referencedColumnName = "id")
     private List<Student> student;

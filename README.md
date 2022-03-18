@@ -6,88 +6,53 @@ I This project is demo of Spring boot ORM.
  ##### Course POJO class
 
 ```bash
-package com.school.model;
+ package com.school.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
-import java.util.List;
 
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "courses")
-public class Course {
+@Table(name = "students")
+public class Student {
 
     @Id
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private  Long id;
 
-    @NotEmpty(message = "Course name is required!")
-    @Column(name = "name")
-    private String name;
+    @NotEmpty(message = "Frist name is required!")
+   @Column(name = "first_name")
+    private String firstName;
 
-    @NotEmpty(message = "Course credit is required!")
-    @Column(name = "credit")
-    private Number credit;
+    @NotEmpty(message = "Last name is required!")
+    @Column(name = "last_name")
+    private  String lastName;
+
+    @NotEmpty(message = "Email is required!")
+    @Column(name = "email", unique = true)
+    private String email;
+
+    @NotEmpty(message = "Phone number is required!")
+    @Column(name = "phone")
+    private String phone;
+
 
     @Temporal(value = TemporalType.TIMESTAMP)
-@Column(name = "created_time")
-    private Date createdAt;
-
-    @NotEmpty(message = "Course description is required!")
-    @Lob
-    @Column(name = "description")
-    private Long description;
+    @Column(name = "registered_at")
+    private Date registeredAt;
 
 
 
-     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "student_id", referencedColumnName = "id")
-    private List<Student> student;
 
-    public Course() {
-    }
-
-    public Course(String name, Number credit, Date createdAt, Long description) {
-        this.name = name;
-        this.credit = credit;
-        this.createdAt = createdAt;
-        this.description = description;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Number getCredit() {
-        return credit;
-    }
-
-    public void setCredit(Number credit) {
-        this.credit = credit;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Long getDescription() {
-        return description;
-    }
-
-    public void setDescription(Long description) {
-        this.description = description;
-    }
 }
+
 
 ```
 
