@@ -7,48 +7,40 @@ I This project is demo of Spring boot ORM.
 
 ```bash
  package com.school.model;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
+ package com.school.model;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import java.util.Date;
+import java.util.List;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Entity
-@Table(name = "students")
-public class Student {
+@Table(name = "courses")
+public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id;
+    private Long id;
 
-    @NotEmpty(message = "Frist name is required!")
-   @Column(name = "first_name")
-    private String firstName;
+    @NotEmpty(message = "Course name is required!")
+    @Column(name = "course_name")
+    private String name;
 
-    @NotEmpty(message = "Last name is required!")
-    @Column(name = "last_name")
-    private  String lastName;
-
-    @NotEmpty(message = "Email is required!")
-    @Column(name = "email", unique = true)
-    private String email;
-
-    @NotEmpty(message = "Phone number is required!")
-    @Column(name = "phone")
-    private String phone;
-
+    @NotEmpty(message = "Course credit is required!")
+    @Column(name = "course_credit")
+    private Number credit;
 
     @Temporal(value = TemporalType.TIMESTAMP)
-    @Column(name = "registered_at")
-    private Date registeredAt;
+    @Column(name = "created_at")
+    private Date createdAt;
 
-
+    @NotEmpty(message = "Course description is required!")
+    @Lob
+    @Column(name = "description")
+    private Long description;
 
 
 }
