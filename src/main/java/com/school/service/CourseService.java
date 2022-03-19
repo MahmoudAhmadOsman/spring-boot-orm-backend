@@ -33,7 +33,7 @@ public class CourseService {
     public Course getCourseById(Course course){
         Course existingCourse = courseRepository.findById(course.getId()).orElse(null);
         existingCourse.setName(course.getName());
-        existingCourse.setCredit(course.getCredit());
+        existingCourse.setCredit((Integer) course.getCredit());
         existingCourse.setCreatedAt(course.getCreatedAt());
         existingCourse.setDescription(course.getDescription());
         return courseRepository.save(existingCourse);

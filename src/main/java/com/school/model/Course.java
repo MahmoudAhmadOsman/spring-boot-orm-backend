@@ -1,6 +1,7 @@
 package com.school.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 
@@ -15,12 +16,13 @@ public class Course {
     private Long id;
 
     @NotEmpty(message = "Course name is required!")
+    @Size(max = 100)
     @Column(name = "course_name")
     private String name;
 
     @NotEmpty(message = "Course credit is required!")
     @Column(name = "course_credit")
-    private Number credit;
+    private int credit;
 
     @Temporal(value = TemporalType.TIMESTAMP)
     @Column(name = "created_at")
@@ -29,7 +31,7 @@ public class Course {
     @NotEmpty(message = "Course description is required!")
     @Lob
     @Column(name = "description")
-    private Long description;
+    private String description;
 
 
     //m:m orm
@@ -41,7 +43,7 @@ public class Course {
     public Course() {
     }
 
-    public Course(Long id, String name, Number credit, Date createdAt, Long description) {
+    public Course(Long id, String name, int credit, Date createdAt, String description) {
         this.id = id;
         this.name = name;
         this.credit = credit;
@@ -65,11 +67,11 @@ public class Course {
         this.name = name;
     }
 
-    public Number getCredit() {
+    public int getCredit() {
         return credit;
     }
 
-    public void setCredit(Number credit) {
+    public void setCredit(int credit) {
         this.credit = credit;
     }
 
@@ -81,11 +83,11 @@ public class Course {
         this.createdAt = createdAt;
     }
 
-    public Long getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(Long description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 }
