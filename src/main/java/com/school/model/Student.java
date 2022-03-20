@@ -11,13 +11,14 @@ import java.util.Date;
 
 @Entity
 @Table(name = "students")
+@Data
 public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
 
-    @NotEmpty(message = "Frist name is required!")
+    @NotEmpty(message = "First name is required!")
    @Column(name = "first_name")
     private String firstName;
 
@@ -37,56 +38,7 @@ public class Student {
     @Temporal(value = TemporalType.TIMESTAMP)
     @Column(name = "registered_at")
     private Date registeredAt;
-    public Student() {
-    }
 
-    public Student(String firstName, String lastName, String email, String phone, Date registeredAt) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
-        this.registeredAt = registeredAt;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public Date getRegisteredAt() {
-        return registeredAt;
-    }
-
-    public void setRegisteredAt(Date registeredAt) {
-        this.registeredAt = registeredAt;
-    }
 
 
 
