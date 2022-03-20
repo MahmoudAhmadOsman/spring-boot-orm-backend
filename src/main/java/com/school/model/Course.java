@@ -2,6 +2,7 @@ package com.school.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -24,9 +25,9 @@ public class Course {
     @Column(name = "course_credit")
     private int credit;
 
-    @Temporal(value = TemporalType.TIMESTAMP)
-    @Column(name = "created_at")
-    private Date createdAt;
+     @NotEmpty(message = "Course cost is required!")
+     @Column(name = "course_cost")
+    private BigDecimal cost;
 
     @NotEmpty(message = "Course description is required!")
     @Lob
@@ -43,11 +44,10 @@ public class Course {
     public Course() {
     }
 
-    public Course(Long id, String name, int credit, Date createdAt, String description) {
-        this.id = id;
+    public Course(String name, int credit, BigDecimal cost, String description) {
         this.name = name;
         this.credit = credit;
-        this.createdAt = createdAt;
+        this.cost = cost;
         this.description = description;
     }
 
@@ -75,12 +75,12 @@ public class Course {
         this.credit = credit;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public BigDecimal getCost() {
+        return cost;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setCost(BigDecimal cost) {
+        this.cost = cost;
     }
 
     public String getDescription() {

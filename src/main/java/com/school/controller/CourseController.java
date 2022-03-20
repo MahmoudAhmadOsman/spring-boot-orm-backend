@@ -1,6 +1,6 @@
 package com.school.controller;
 import com.school.model.Course;
-import com.school.service.CourseService;
+import com.school.service.CourseServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,29 +10,27 @@ import java.util.List;
 
 //@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/v1/") //Annotation the @requestMapping on the class level
+@RequestMapping("/api/v1") //Annotation the @RequestMapping on the class level
 public class CourseController {
     @Autowired
-    private CourseService courseService;
+    private CourseServices courseService;
 
 
     //Get list of courses
       @GetMapping("/courses")
         public ResponseEntity<List<Course>> coursesList(){
             List<Course> courses = courseService.getCourses();
-            return new ResponseEntity<List<Course>>(courses, HttpStatus.OK);
+           return new ResponseEntity<List<Course>>(courses, HttpStatus.OK);
+
         }
 
 
-    //Save a course
+    //Create/post new course
     @PostMapping("/courses")
-    public Course createCourse(@RequestBody Course course){
-        return  courseService.saveCourse(course);
-
+    public ResponseEntity<Course> postCourse(@RequestBody Course course) {
+        Course course1 = courseService.createCourse(course);
+        return new ResponseEntity<Course>(course1, HttpStatus.OK);
     }
-
-
-
 
 
 
