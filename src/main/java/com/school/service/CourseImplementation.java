@@ -14,7 +14,7 @@ public class CourseImplementation implements CourseServices {
     private CourseRepository courseRepository;
 
     @Override
-    public List<Course> getCourses() {
+    public List<Course> getAllCourses() {
 
         return courseRepository.findAll();
     }
@@ -25,6 +25,19 @@ public class CourseImplementation implements CourseServices {
 
     }
 
+    @Override
+    public Course findById(Long id) {
+        if(courseRepository.findById(id).isPresent()){
+            return courseRepository.findById(id).get();
+        }
+        return null;
+    }
+
+    @Override
+    public void  delete(Long id) {
+        Course course = findById(id);
+        courseRepository.delete(course);
+    }
 
 
 }

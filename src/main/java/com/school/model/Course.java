@@ -1,13 +1,12 @@
 package com.school.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
 
 @Entity
+
 @Table(name = "courses")
 public class Course {
 
@@ -17,7 +16,7 @@ public class Course {
     private Long id;
 
     @NotEmpty(message = "Course name is required!")
-    @Size(max = 100)
+
     @Column(name = "course_name")
     private String name;
 
@@ -37,6 +36,7 @@ public class Course {
 
     //m:m orm
     //course is the owning side - OneToOne rom
+
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
         @JoinColumn(name = "student_id", referencedColumnName = "id")
     private List<Student> student;

@@ -19,7 +19,7 @@ public class CourseController {
     //Get list of courses
       @GetMapping("/courses")
         public ResponseEntity<List<Course>> coursesList(){
-            List<Course> courses = courseService.getCourses();
+            List<Course> courses = courseService.getAllCourses();
            return new ResponseEntity<List<Course>>(courses, HttpStatus.OK);
 
         }
@@ -31,8 +31,6 @@ public class CourseController {
         Course course1 = courseService.createCourse(course);
         return new ResponseEntity<Course>(course1, HttpStatus.OK);
     }
-
-
 
 
 
