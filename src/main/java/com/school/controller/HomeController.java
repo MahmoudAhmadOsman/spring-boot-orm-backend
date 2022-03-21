@@ -5,14 +5,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
 
 
-    @ResponseBody
-    @RequestMapping("/")
-    public String home(){
-        return "Welcome to homepage!";
+//    @ResponseBody
+//    @RequestMapping("/")
+//    public String home(){
+//        return "index";
+//    }
+
+    @GetMapping("/")
+    public String index(){
+        return "index";
     }
+
 }
