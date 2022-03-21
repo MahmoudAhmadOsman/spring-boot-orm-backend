@@ -17,7 +17,7 @@ public interface CourseServices {
 
     //Update method
     Course  update(Long id);
-
+//    Course  updateCourse(Course course);
 
     //Delete method
     void delete(Long id);

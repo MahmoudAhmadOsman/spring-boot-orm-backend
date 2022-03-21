@@ -49,7 +49,7 @@ public class Course {
     //course is the owning side - OneToOne rom
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
         @JoinColumn(name = "student_id")
-    private List<Student> student;
+    private List<Student> students;
 
 
 

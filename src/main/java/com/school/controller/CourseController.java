@@ -42,12 +42,18 @@ public class CourseController {
 
 
     //Update method
-    //@PutMapping(value = "/update")
-    @PutMapping(value = "/courses/{id}")
-    public ResponseEntity<Course> createCourse(@PathVariable Long id, @RequestBody Course course) {
+
+    @PutMapping(value = "/courses/{id}/edit")
+    public ResponseEntity<Course> updateCourse(@PathVariable Long id, @RequestBody Course course) {
         Course updatedCourse = courseService.update(id);
         return new ResponseEntity<Course>(updatedCourse, HttpStatus.OK);
     }
+
+
+//    @PutMapping("/courses/{id}/edit")
+//    public void updateCourse(@PathVariable("id") Long id, @RequestBody Course course){
+//        Course updatedCourse =  courseService.updateCourse(course);
+//    }
 
 
     //Delete method
