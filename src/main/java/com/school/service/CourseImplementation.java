@@ -10,19 +10,17 @@ import java.util.List;
 @Service
 public class CourseImplementation implements CourseServices {
 
-        @Autowired
-    private CourseRepository courseRepository;
+    @Autowired
+    private  CourseRepository courseRepository;
 
     @Override
     public List<Course> getAllCourses() {
-
         return courseRepository.findAll();
     }
 
     @Override
     public Course save(Course course) {
          return courseRepository.save(course);
-
     }
 
     @Override
@@ -32,6 +30,7 @@ public class CourseImplementation implements CourseServices {
         }
         return null;
     }
+
 
     @Override
     public Course update(Long id) {

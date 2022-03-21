@@ -29,7 +29,7 @@ public class CourseController {
     @PostMapping(value = "/courses")
     public ResponseEntity<Course> createCourse(@RequestBody Course course) {
         Course course1 = courseService.save(course);
-        return new ResponseEntity<Course>(course1, HttpStatus.OK);
+        return new ResponseEntity<Course>(course1, HttpStatus.CREATED);
     }
 
 
@@ -42,6 +42,7 @@ public class CourseController {
 
 
     //Update method
+    //@PutMapping(value = "/update")
     @PutMapping(value = "/courses/{id}")
     public ResponseEntity<Course> createCourse(@PathVariable Long id, @RequestBody Course course) {
         Course updatedCourse = courseService.update(id);
@@ -51,9 +52,9 @@ public class CourseController {
 
     //Delete method
     @DeleteMapping(value = "/courses/{id}")
-    public ResponseEntity<String> deleteCourse(@PathVariable("id") Long id){
+    public ResponseEntity<?> deleteCourse(@PathVariable("id") Long id){
           courseService.delete(id);
-          return new ResponseEntity<String>("Course has been deleted successfully", HttpStatus.OK);
+          return new ResponseEntity<>("Course has been deleted successfully", HttpStatus.OK);
 }
 
 
