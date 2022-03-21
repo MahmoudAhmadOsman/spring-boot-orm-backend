@@ -20,20 +20,17 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "Course name is required!")
 
     @Column(name = "course_name")
     private String name;
 
-    @NotEmpty(message = "Course credit is required!")
     @Column(name = "course_credit")
-    private int credit;
+    private Number credit;
 
-     @NotEmpty(message = "Course cost is required!")
-     @Column(name = "course_cost")
+    @Column(name = "course_cost")
     private BigDecimal cost;
 
-    @NotEmpty(message = "Course description is required!")
+
     @Lob
     @Column(name = "description")
     private String description;

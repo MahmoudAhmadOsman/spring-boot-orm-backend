@@ -13,10 +13,13 @@ public interface CourseServices {
      Course createCourse(Course course);
 
 
-     //Find by id
+     //findById method
     Course findById(Long id);
 
-    //Delete course
+    //Update method
+    Course updateCourse(Long id);
+
+    //Delete method
     void delete(Long id);
 
 
