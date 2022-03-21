@@ -20,7 +20,7 @@ public class CourseImplementation implements CourseServices {
     }
 
     @Override
-    public Course createCourse(Course course) {
+    public Course save(Course course) {
          return courseRepository.save(course);
 
     }
@@ -34,11 +34,12 @@ public class CourseImplementation implements CourseServices {
     }
 
     @Override
-    public Course updateCourse(Long id) {
-        if(courseRepository.findById(id).isPresent()){
-            return courseRepository.findById(id).get();
-        }
-        return null;
+    public Course update(Long id) {
+       if(courseRepository.findById(id).isPresent()){
+           return courseRepository.findById(id).get();
+       }else {
+           return null;
+       }
     }
 
 

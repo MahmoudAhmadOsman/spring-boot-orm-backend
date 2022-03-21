@@ -10,14 +10,14 @@ public interface CourseServices {
      List<Course> getAllCourses();
 
     //Post/create method
-     Course createCourse(Course course);
+     Course save(Course course);
 
 
      //findById method
     Course findById(Long id);
 
     //Update method
-    Course updateCourse(Long id);
+    Course update(Long id);
 
     //Delete method
     void delete(Long id);

@@ -28,7 +28,7 @@ public class CourseController {
     //Create/post new course
     @PostMapping(value = "/courses")
     public ResponseEntity<Course> createCourse(@RequestBody Course course) {
-        Course course1 = courseService.createCourse(course);
+        Course course1 = courseService.save(course);
         return new ResponseEntity<Course>(course1, HttpStatus.OK);
     }
 
@@ -44,7 +44,7 @@ public class CourseController {
     //Update method
     @PutMapping(value = "/courses/{id}")
     public ResponseEntity<Course> createCourse(@PathVariable Long id, @RequestBody Course course) {
-        Course updatedCourse = courseService.updateCourse(id);
+        Course updatedCourse = courseService.update(id);
         return new ResponseEntity<Course>(updatedCourse, HttpStatus.OK);
     }
 
