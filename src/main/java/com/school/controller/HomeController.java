@@ -9,14 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
-
-
-//    @ResponseBody
-//    @RequestMapping("/")
-//    public String home(){
-//        return "index";
-//    }
-
     @GetMapping("/")
     public String index(){
         return "index";
