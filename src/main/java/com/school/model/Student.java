@@ -1,8 +1,14 @@
 package com.school.model;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.domain.Page;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -14,28 +20,34 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
 
-    @NotEmpty(message = "First name is required!")
+//    @NotEmpty(message = "First name is required!")
    @Column(name = "first_name")
     private String firstName;
 
-    @NotEmpty(message = "Last name is required!")
+
     @Column(name = "last_name")
     private  String lastName;
 
-    @NotEmpty(message = "Email is required!")
+
     @Column(name = "email_address", unique = true)
     private String email;
 
-    @NotEmpty(message = "Phone number is required!")
+
     @Column(name = "phone_number")
     private String phone;
 
+    @Column(name = "date_created")
+    @CreationTimestamp
+    private Date dateCreated;
 
-    @Temporal(value = TemporalType.TIMESTAMP)
-    @Column(name = "registered_at")
-    private Date registeredAt;
+    @Column(name = "last_updated")
+    @UpdateTimestamp
+    private Date lastUpdated;
 
-
+    //1:m orm
+    @OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "student_course_fk", referencedColumnName = "id")
+    private Set<Course> courses;
 
 
 }

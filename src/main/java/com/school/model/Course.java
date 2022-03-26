@@ -3,7 +3,8 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.*;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -18,15 +19,20 @@ public class Course {
     @Id
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, updatable = false)
-    private Long id;
+//    @Column(nullable = false, updatable = false)
+    @Column(name = "course_id")
+    private Long cid;
 
 
     @Column(name = "course_name")
     private String name;
 
     @Column(name = "course_credit")
-    private Number credit;
+
+    @Min(1)
+    @Max(4)
+    @PositiveOrZero
+    private int credit;
 
     @Column(name = "course_cost")
     private BigDecimal cost;
@@ -45,11 +51,6 @@ public class Course {
     private Date lastUpdated;
 
 
-    //m:m orm
-    //course is the owning side - OneToOne rom
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-        @JoinColumn(name = "student_id")
-    private List<Student> students;
 
 
 
