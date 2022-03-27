@@ -1,11 +1,13 @@
 package com.school.model;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.domain.Page;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -14,6 +16,7 @@ import java.util.Set;
 @Entity
 @Table(name = "students")
 @Data
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Student {
 
     @Id
@@ -48,6 +51,7 @@ public class Student {
     @OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "student_course_fk", referencedColumnName = "id")
     private Set<Course> courses;
+
 
 
 }
