@@ -19,14 +19,14 @@ public class StudentService {
 
 
     //Create  a student record
-    public  Student createStudent(Student student){
+    public  Student saveStudent(Student student){
         return studentRepository.save(student);
     }
 
 //    Student save(Student student);
 
     //Get student record by id
-    public Student getStudentById(Long id){
+    public Student findStudentById(Long id){
         return studentRepository.findById(id).get();
     }
 

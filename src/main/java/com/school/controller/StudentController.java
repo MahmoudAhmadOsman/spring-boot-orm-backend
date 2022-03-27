@@ -27,10 +27,29 @@ public class StudentController {
     //Add/post new student
     @PostMapping(value = "/students/create")
     public ResponseEntity<Student> createStudent(@RequestBody Student student){
-        Student createStudent = studentService.createStudent(student);
+        Student createStudent = studentService.saveStudent(student);
         return new ResponseEntity<Student>(createStudent, HttpStatus.CREATED);
     }
 
+
+
+    //@UPDATE METHOD
+    @PutMapping("/students/{id}")
+    public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student studentDetails) {
+        Student student = studentService.findStudentById(id);
+        Student updatedStudent = studentService.saveStudent(student);
+        return ResponseEntity.ok(updatedStudent);
+
+    }
+
+
+    //Delete student
+    @DeleteMapping(value = "/students/{id}")
+    public ResponseEntity<?> deleteStudent(@PathVariable("id") Long id){
+        studentService.deleteStudent(id);
+        return new ResponseEntity<>("Student has been deleted successfully", HttpStatus.OK);
+
+    }
 
 
 
