@@ -42,6 +42,12 @@ public class Student {
     @UpdateTimestamp
     private Date lastUpdated;
 
+
+//Embed the guardian class here
+    @Embedded
+    private Guardian guardian;
+
+
     //1:m orm
 //    @OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL)
 //    @JoinColumn(name = "student_course_fk", referencedColumnName = "id")

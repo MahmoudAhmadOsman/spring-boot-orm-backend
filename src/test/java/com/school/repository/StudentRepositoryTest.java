@@ -1,6 +1,7 @@
 package com.school.repository;
 
 
+import com.school.entity.Guardian;
 import com.school.entity.Student;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +16,31 @@ private StudentRepository studentRepository;
 
 @Test
 public  void saveStudent(){
-    Student student = Student.builder()
-            .firstName("Mahmoud")
-            .lastName("Osman")
-            .emailAddress("mahmoud@gmail.com")
-            .phoneNumber("6515554444")
+    Guardian guardian = Guardian.builder()
+            .guardianName("Mahmoud")
+            .guardianEmail("mahmoud@yahoo.com")
+            .guardianPhone("8026987451")
             .build();
 
-    studentRepository.save(student) ;
+    Student s1 = Student.builder()
+            .firstName("John")
+            .lastName("Doe")
+            .emailAddress("jdoe@gmail.com")
+            .phoneNumber("8064526853")
+            .guardian(guardian)
+
+            .build();
+    Student s2 = Student.builder()
+            .firstName("Smith")
+            .lastName("Doe")
+            .emailAddress("sjoe@yahoo.com")
+            .phoneNumber("6124879541")
+            .guardian(guardian)
+
+            .build();
+
+    studentRepository.save(s1);
+    studentRepository.save(s2) ;
 
     }
 
