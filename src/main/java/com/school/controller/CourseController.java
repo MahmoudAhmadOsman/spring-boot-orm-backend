@@ -1,5 +1,5 @@
 package com.school.controller;
-import com.school.model.Course;
+import com.school.entity.Course;
 import com.school.service.CourseServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

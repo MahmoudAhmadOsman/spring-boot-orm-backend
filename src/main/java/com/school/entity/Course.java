@@ -1,5 +1,8 @@
-package com.school.model;
+package com.school.entity;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
@@ -10,41 +13,29 @@ import java.util.Date;
 
 
 @Entity
-@Table(name = "courses")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Course {
 
     @Id
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(nullable = false, updatable = false)
-    @Column(name = "course_id")
     private Long id;
 
-
-    @Column(name = "course_name")
     private String courseName;
-
-    @Column(name = "course_credit")
-    @Min(1)
-    @Max(4)
+    @Max(5)
     @PositiveOrZero
-    private int credit;
+    private int courseCredit;
 
-    @Column(name = "course_cost")
-    private BigDecimal cost;
-
+    private BigDecimal courseCost;
 
     @Lob
-    @Column(name = "description")
     private String description;
 
-    @Column(name = "date_created")
     @CreationTimestamp
     private Date dateCreated;
-
-    @Column(name = "last_updated")
     @UpdateTimestamp
     private Date lastUpdated;
 

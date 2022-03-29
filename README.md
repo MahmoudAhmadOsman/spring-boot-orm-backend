@@ -6,7 +6,7 @@ I This project is demo of Spring boot ORM.
  ##### Course POJO class
 
 ```bash
-package com.school.model;
+package com.school.entityy;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
