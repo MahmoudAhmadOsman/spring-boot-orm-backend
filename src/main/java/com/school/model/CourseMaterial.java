@@ -18,7 +18,7 @@ public class CourseMaterial {
     @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "course_material_sequence")
     private Long courseMaterialId;
 
-    private String url;
+    private String courseBook;
 
 
 
