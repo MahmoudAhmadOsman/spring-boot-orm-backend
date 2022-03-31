@@ -1,9 +1,6 @@
 package com.school.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,10 +9,19 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+
+@ToString(exclude = "course") // disable the FetchType when running courseMaterial test
 public class CourseMaterial {
     @Id
-    @SequenceGenerator( name = "course_material_sequence", sequenceName = "course_material_sequence", allocationSize = 1)
-    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "course_material_sequence")
+    @SequenceGenerator(
+            name = "course_material_sequence",
+            sequenceName = "course_material_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "course_material_sequence"
+    )
     private Long courseMaterialId;
 
     private String courseBook;
@@ -23,7 +29,13 @@ public class CourseMaterial {
 
 
     //set the orm
-    @OneToOne
-    @JoinColumn( name = "course_id", referencedColumnName = "courseId" )
+    @OneToOne(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    @JoinColumn(
+            name = "course_id",
+            referencedColumnName = "courseId"
+    )
     private Course course;
 }

@@ -20,8 +20,15 @@ import java.util.Date;
 //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Course {
     @Id
-    @SequenceGenerator( name = "course_sequence", sequenceName = "course_sequence",  allocationSize = 1)
-    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "course_sequence")
+    @SequenceGenerator(
+            name = "course_sequence",
+            sequenceName = "course_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "course_sequence"
+    )
     private  Long courseId;
 
     private String courseName;
@@ -29,7 +36,8 @@ public class Course {
     @PositiveOrZero
     private int courseCredit;
 
-    private BigDecimal courseCost;
+    private int courseCost;
+//    private BigDecimal courseCost;
 
     @Lob
     private String description;

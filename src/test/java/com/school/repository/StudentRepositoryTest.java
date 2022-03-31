@@ -12,7 +12,7 @@ import java.util.List;
 @SpringBootTest
 class StudentRepositoryTest {
     @Autowired
-private StudentRepository studentRepository;
+    private StudentRepository studentRepository;
 
 @Test
 public  void saveStudent(){
@@ -30,6 +30,7 @@ public  void saveStudent(){
             .guardian(guardian)
 
             .build();
+
     Student s2 = Student.builder()
             .firstName("Smith")
             .lastName("Doe")
