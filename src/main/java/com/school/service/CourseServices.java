@@ -1,6 +1,6 @@
 package com.school.service;
 
-import com.school.entity.Course;
+import com.school.model.Course;
 
 import java.util.List;
 

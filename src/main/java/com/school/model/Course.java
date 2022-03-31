@@ -1,4 +1,4 @@
-package com.school.entity;
+package com.school.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,10 +19,10 @@ import java.util.Date;
 @Builder
 //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Course {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @SequenceGenerator( name = "course_sequence", sequenceName = "course_sequence",  allocationSize = 1)
+    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "course_sequence")
+    private  Long courseId;
 
     private String courseName;
     @Max(5)
