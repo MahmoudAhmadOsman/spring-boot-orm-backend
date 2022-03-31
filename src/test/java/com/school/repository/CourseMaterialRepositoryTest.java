@@ -38,7 +38,7 @@ class CourseMaterialRepositoryTest {
     public  void getListOfCourseMaterial(){
         List<CourseMaterial> courseMaterial =
                 courseMaterialRepository.findAll();
-        System.out.println("Student list: " + courseMaterial);
+        System.out.println("Course Material list: " + courseMaterial);
 
     }
 
