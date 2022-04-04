@@ -23,26 +23,12 @@ public class StudentController {
 
             }
 
-        /*
-           //findById method
-            @GetMapping(value = "/courses/{id}")
-            public ResponseEntity<Course> findByIdCourse(@PathVariable("id") Long id){
-                  Course course = courseService.findById(id);
-                  return new ResponseEntity<Course>(course, HttpStatus.OK);
-            }
-
-        * */
-
-
-
     //findById method
     @GetMapping(value = "/students/{id}")
     public ResponseEntity<Student> findStudentById(@PathVariable("id") Long id){
         Student student = studentService.findStudentById(id);
         return new ResponseEntity<Student>(student, HttpStatus.OK);
     }
-
-
 
 
     //Add/post new student
