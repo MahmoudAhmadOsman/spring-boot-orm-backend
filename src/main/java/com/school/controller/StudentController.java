@@ -30,15 +30,12 @@ public class StudentController {
         return new ResponseEntity<Student>(student, HttpStatus.OK);
     }
 
-
     //Add/post new student
     @PostMapping(value = "/students/create")
     public ResponseEntity<Student> createStudent(@RequestBody Student student){
         Student createStudent = studentService.saveStudent(student);
         return new ResponseEntity<Student>(createStudent, HttpStatus.CREATED);
     }
-
-
 
     //@UPDATE METHOD
     @PutMapping("/students/{id}")
@@ -49,7 +46,6 @@ public class StudentController {
 
     }
 
-
     //Delete student
     @DeleteMapping(value = "/students/{id}")
     public ResponseEntity<?> deleteStudent(@PathVariable("id") Long id){
@@ -57,8 +53,6 @@ public class StudentController {
         return new ResponseEntity<>("Student has been deleted successfully", HttpStatus.OK);
 
     }
-
-
 
 
 }
