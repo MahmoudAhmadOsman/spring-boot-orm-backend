@@ -12,7 +12,6 @@ public class TeacherService {
     @Autowired
     private TeacherRespository teacherRespository;
 
-
     //Get method
     public List<Teacher> getListOfTeacher(){
         return teacherRespository.findAll();
@@ -27,7 +26,6 @@ public class TeacherService {
     public Teacher findTeacherById(Long teacherId){
         return teacherRespository.findById(teacherId).get();
     }
-
 
     //Delete method
     public void deleteTeacher(Long teacherId){
