@@ -32,10 +32,7 @@ public class Teacher {
     private String emailAddress;
 
 
-
-
     //One-to-many relationship mapping
-
     @OneToMany(
             cascade = CascadeType.ALL
     )

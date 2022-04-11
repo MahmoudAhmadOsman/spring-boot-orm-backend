@@ -31,7 +31,8 @@ public class CourseMaterial {
     //set the orm
     @OneToOne(
             cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
+            fetch = FetchType.LAZY,
+            optional = false // can't save course w/ course
     )
     @JoinColumn(
             name = "course_id",
