@@ -23,7 +23,6 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
-//    Student save(Student student);
 
     //Get student record by id
     public Student findStudentById(Long id){

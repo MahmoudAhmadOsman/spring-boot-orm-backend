@@ -49,6 +49,12 @@ public class Course {
 
 
 
+// One-to-one: - bidirectional mapping
+// Column is already defined in CourseMaterial attribute
+    @OneToOne(
+         mappedBy = "course"
+    )
+    private CourseMaterial courseMaterial;
 
 
 }
