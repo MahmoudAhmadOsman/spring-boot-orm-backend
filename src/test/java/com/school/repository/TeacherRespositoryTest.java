@@ -18,25 +18,28 @@ class TeacherRespositoryTest {
 
 
     @Test
-    public void saveTeacher(){
     //1st create course that this teacher will be teaching
-        Course java = Course.builder()
+    public void saveTeacher(){
+        Course php = Course.builder()
                 .courseName("PHP")
                 .courseCredit(4)
-                .courseCost(2800)
+                .courseCost(1800)
                 .description("This course teach PHP fundamentals")
                 .build();
+
         Course cpp = Course.builder()
                 .courseName("C++")
-                .courseCredit(4)
+                .courseCredit(6)
                 .courseCost(2800)
                 .description("Teaches C++ fundamentals")
                 .build();
 
-        Teacher teacher = Teacher.builder()
-                .firstName("Mahmoud")
-                .lastName("Osman")
-                .courses(List.of(java, cpp))
+        Teacher teacher =
+                Teacher.builder()
+                .firstName("John")
+                .lastName("Doe")
+                .emailAddress("john_smith@yahoo.com")
+                .courses(List.of(php, cpp))
                 .build();
 
         teacherRespository.save(teacher);

@@ -29,6 +29,7 @@ public class Course {
             strategy = GenerationType.SEQUENCE,
             generator = "course_sequence"
     )
+    @NotNull
     private  Long courseId;
 
     private String courseName;
@@ -55,6 +56,20 @@ public class Course {
          mappedBy = "course"
     )
     private CourseMaterial courseMaterial;
+
+
+    //Teacher orm
+    @ManyToOne(
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(
+            name = "teacher_id",
+            referencedColumnName = "teacherId"
+    )
+    private Teacher teacher;
+
+
+
 
 
 }
