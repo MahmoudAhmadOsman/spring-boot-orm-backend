@@ -6,7 +6,7 @@ I This project is demo of Spring boot ORM.
  ##### Course POJO class
 
 ```bash
- package com.school.model;
+package com.school.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
