@@ -1,14 +1,12 @@
 package com.school.repository;
-import com.school.model.Course;
-import com.school.model.CourseMaterial;
+import com.school.beans.Course;
+import com.school.beans.CourseMaterial;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.util.List;
 
 @SpringBootTest
-
 class CourseMaterialRepositoryTest {
     @Autowired
     private CourseMaterialRepository courseMaterialRepository;
@@ -16,15 +14,15 @@ class CourseMaterialRepositoryTest {
     public void saveCourseMaterial(){
         Course course =
                 Course.builder()
-                        .courseName("Java")
+                        .courseName("Spring Boot")
                         .courseCredit(4)
                         .courseCost(2500)
-                        .description("This course teaches Java basics")
+                        .description("This course teaches Spring Boot basics")
                         .build();
 
         CourseMaterial courseMaterial =
                 CourseMaterial.builder()
-                        .courseBook("Mastering Java & Spring ")
+                        .courseBook("Mastering Spring & Spring Boot framework ")
                         .course(course)
                         .build();
 

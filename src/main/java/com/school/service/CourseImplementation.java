@@ -1,6 +1,6 @@
 package com.school.service;
 
-import com.school.model.Course;
+import com.school.beans.Course;
 import com.school.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

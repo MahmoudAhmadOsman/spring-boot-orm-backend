@@ -1,5 +1,5 @@
 package com.school.service;
-import com.school.model.Teacher;
+import com.school.beans.Teacher;
 import com.school.repository.TeacherRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

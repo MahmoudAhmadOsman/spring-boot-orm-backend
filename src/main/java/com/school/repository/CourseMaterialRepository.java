@@ -1,6 +1,6 @@
 package com.school.repository;
 
-import com.school.model.CourseMaterial;
+import com.school.beans.CourseMaterial;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

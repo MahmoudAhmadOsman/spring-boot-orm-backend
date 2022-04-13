@@ -1,8 +1,8 @@
 package com.school.repository;
 
 
-import com.school.model.Guardian;
-import com.school.model.Student;
+import com.school.beans.Guardian;
+import com.school.beans.Student;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
