@@ -10,8 +10,9 @@ import java.util.List;
 class CourseMaterialRepositoryTest {
     @Autowired
     private CourseMaterialRepository courseMaterialRepository;
+
     @Test
-    public void saveCourseMaterial(){
+    public void saveCourseMaterial() {
         Course course =
                 Course.builder()
                         .courseName("Spring Boot")
@@ -25,10 +26,8 @@ class CourseMaterialRepositoryTest {
                         .courseBook("Mastering Spring & Spring Boot framework ")
                         .course(course)
                         .build();
-
         courseMaterialRepository.save(courseMaterial);
     }
-
 
 
     //Get list of course material
