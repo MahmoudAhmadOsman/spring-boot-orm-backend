@@ -18,8 +18,7 @@ public class CourseServiceImplementation implements CourseServicesInterface {
     public Course save(Course course) {
         if(course.getCourseName().isEmpty() || course.getCourseName().length() == 0){
             throw new BusinessException("601","Course name is required!");
-        }
-        try{
+        }try{
             Course saveCourse = courseRepository.save(course);
             return saveCourse;
         }catch (IllegalArgumentException e){
