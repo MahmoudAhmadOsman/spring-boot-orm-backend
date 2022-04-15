@@ -111,20 +111,7 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/Student'
-  /api/v1/courses:
-    get:
-      tags:
-      - course-controller
-      operationId: coursesList
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Course'
+  /api/v1/courses/create:
     post:
       tags:
       - course-controller
@@ -156,6 +143,20 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Student'
+  /api/v1/courses:
+    get:
+      tags:
+      - course-controller
+      operationId: coursesList
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Course'
   /api/v1/courses/{id}:
     get:
       tags:

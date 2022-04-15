@@ -4,7 +4,7 @@ import com.school.beans.Course;
 
 import java.util.List;
 
-public interface CourseServices {
+public interface CourseServicesInterface {
 
     //Get method
      List<Course> getAllCourses();
