@@ -14,6 +14,7 @@ public class TeacherService {
 
     //Get method
     public List<Teacher> getListOfTeacher(){
+
         return teacherRespository.findAll();
     }
 
