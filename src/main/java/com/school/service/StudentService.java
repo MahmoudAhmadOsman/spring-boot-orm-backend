@@ -55,7 +55,7 @@ public class StudentService {
             studentRepository.deleteById(id);
         }catch (Exception e){
             throw new ResponseStatusException(
-              HttpStatus.NOT_FOUND, "Unable to delete this record!", e
+              HttpStatus.BAD_REQUEST, "Unable to delete this record!", e
             );
         }
 
