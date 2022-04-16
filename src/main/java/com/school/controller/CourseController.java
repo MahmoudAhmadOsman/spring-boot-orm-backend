@@ -1,5 +1,7 @@
 package com.school.controller;
 import com.school.beans.Course;
+import com.school.config.BusinessException;
+import com.school.config.ControllerException;
 import com.school.service.CourseServicesInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,34 +21,63 @@ public class CourseController {
     //Get list of courses
       @GetMapping(value = "/courses")
         public ResponseEntity<List<Course>> coursesList(){
-            List<Course> courses = courseService.getAllCourses();
-           return new ResponseEntity<List<Course>>(courses, HttpStatus.OK);
-
+              List<Course> courses = courseService.getAllCourses();
+              return new ResponseEntity<List<Course>>(courses, HttpStatus.OK);
         }
 
 
     //Create/post new course
     @PostMapping(value = "/courses/create")
-    public ResponseEntity<Course> createCourse(@RequestBody Course course) {
-        Course course1 = courseService.save(course);
-        return new ResponseEntity<Course>(course1, HttpStatus.CREATED);
+    public ResponseEntity<?> createCourse(@RequestBody Course course) {
+       try{
+           Course saveCourse = courseService.save(course);
+           return new ResponseEntity<Course>(saveCourse, HttpStatus.CREATED);
+       }catch (BusinessException e){
+           ControllerException ce = new ControllerException(e.getErrorCode(), e.getErrorMessage());
+        return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
+
+       }catch (Exception e){
+        ControllerException ce = new ControllerException("611", "Something went wrong in controller!");
+        return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
+       }
+
     }
 
 
-    //findById method
+    //get by id method
     @GetMapping(value = "/courses/{id}")
-    public ResponseEntity<Course> findByIdCourse(@PathVariable("id") Long id){
-          Course course = courseService.findById(id);
-          return new ResponseEntity<Course>(course, HttpStatus.OK);
+    public ResponseEntity<?> findByIdCourse(@PathVariable("id") Long id){
+          try{
+              Course course = courseService.findById(id);
+              return new ResponseEntity<Course>(course, HttpStatus.OK);
+          }catch (BusinessException e){
+            ControllerException ce = new ControllerException(e.getErrorCode(), e.getErrorMessage());
+            return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
+
+        }catch (Exception e){
+            ControllerException ce = new ControllerException("612", "Something went wrong in controller!");
+            return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
+        }
     }
 
 
     //Update method
 
     @PutMapping(value = "/courses/{id}/edit")
-    public ResponseEntity<Course> updateCourse(@PathVariable Long id, @RequestBody Course course) {
-        Course updatedCourse = courseService.update(id);
-        return new ResponseEntity<Course>(updatedCourse, HttpStatus.OK);
+    public ResponseEntity<?> updateCourse(@PathVariable Long id, @RequestBody Course course) {
+
+          try {
+              Course updatedCourse = courseService.update(id);
+              return new ResponseEntity<Course>(updatedCourse, HttpStatus.OK);
+          }catch (BusinessException e){
+            ControllerException ce = new ControllerException(e.getErrorCode(), e.getErrorMessage());
+            return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
+
+        }catch (Exception e){
+            ControllerException ce = new ControllerException("613", "Something went wrong in controller!");
+            return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
+        }
+
     }
 
 
@@ -59,8 +90,18 @@ public class CourseController {
     //Delete method
     @DeleteMapping(value = "/courses/{id}")
     public ResponseEntity<?> deleteCourse(@PathVariable("id") Long id){
-          courseService.delete(id);
-          return new ResponseEntity<>("Course has been deleted successfully", HttpStatus.ACCEPTED);
+          try{
+              courseService.delete(id);
+              return new ResponseEntity<>("Course has been deleted successfully", HttpStatus.ACCEPTED);
+          } catch (BusinessException e){
+            ControllerException ce = new ControllerException(e.getErrorCode(), e.getErrorMessage());
+            return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
+
+        }catch (Exception e){
+            ControllerException ce = new ControllerException("614", "Something went wrong in controller!");
+            return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
+        }
+
 }
 
 
