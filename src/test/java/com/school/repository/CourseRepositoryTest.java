@@ -29,8 +29,9 @@ class CourseRepositoryTest {
                 .description("Teaches WordPress basics")
                 .teacher(teacher)
                 .build();
-
         courseRepository.save(course);
+
+
     }
 
 

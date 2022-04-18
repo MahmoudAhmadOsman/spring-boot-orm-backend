@@ -9,10 +9,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-class TeacherRespositoryTest {
+class TeacherRepositoryTest {
 
     @Autowired
-    private TeacherRespository teacherRespository;
+    private TeacherRepository teacherRepository;
 
 
     @Test
@@ -39,8 +39,8 @@ class TeacherRespositoryTest {
                 .emailAddress("john_smith@yahoo.com")
                 .courses(List.of(php, cpp))
                 .build();
+        teacherRepository.save(teacher);
 
-        teacherRespository.save(teacher);
 
     }
 

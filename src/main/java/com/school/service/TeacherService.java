@@ -1,6 +1,6 @@
 package com.school.service;
 import com.school.beans.Teacher;
-import com.school.repository.TeacherRespository;
+import com.school.repository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,27 +10,27 @@ import java.util.List;
 public class TeacherService {
 
     @Autowired
-    private TeacherRespository teacherRespository;
+    private TeacherRepository teacherRepository;
 
     //Get method
     public List<Teacher> getListOfTeacher(){
 
-        return teacherRespository.findAll();
+        return teacherRepository.findAll();
     }
 
     //Post method
     public Teacher saveTeacher(Teacher teacher){
-            return teacherRespository.save(teacher);
+            return teacherRepository.save(teacher);
     }
 
     //Find by id method
     public Teacher findTeacherById(Long teacherId){
-        return teacherRespository.findById(teacherId).get();
+        return teacherRepository.findById(teacherId).get();
     }
 
     //Delete method
     public void deleteTeacher(Long teacherId){
-         teacherRespository.deleteById(teacherId);
+         teacherRepository.deleteById(teacherId);
     }
 
 
