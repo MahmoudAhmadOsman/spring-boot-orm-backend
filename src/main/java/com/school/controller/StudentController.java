@@ -16,7 +16,7 @@ public class StudentController {
    private StudentService  studentService;
 
     //Get all Student
-    @GetMapping(value = "/students")
+    @GetMapping(value = "api/v1/students")
         public ResponseEntity<List<Student>> StudentList(){
                 List<Student> students = studentService.getAllStudent();
                return new ResponseEntity<List<Student>>(students, HttpStatus.OK);
