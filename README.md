@@ -6,18 +6,6 @@ I This project is demo of Spring boot ORM.
  ##### Course POJO class
 
 ```bash
-package com.school.model;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-import javax.persistence.*;
-import javax.validation.constraints.*;
-import java.math.BigDecimal;
-import java.util.Date;
-
 
 
 @Entity
