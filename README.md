@@ -33,25 +33,11 @@ public class Course {
     private Date dateCreated;
     @UpdateTimestamp
     private Date lastUpdated;
-
-
-
-
-
 }
-
-
 
 
 ```
 
-
-
-
-
-## Contributing
-
-Please, feel free to contrubute to this and correct me if you see anything wrong about this project or if you have any sugguestions that would also welcomed.
 
 ### My Website
 
